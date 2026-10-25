@@ -3,29 +3,14 @@
 @section('content')
 <div class="directory-container">
     <header class="directory-header">
-        <div class="header-main">
-            <div class="tag-row">
-                <span class="market-tag">Directory // 01</span>
-                <span class="status-indicator">
-                    <span class="status-pip" aria-hidden="true"></span>
-                    <span class="status-label">Eloquent ORM</span>
-                </span>
-            </div>
-            <h1 class="page-title">Customer Accounts</h1>
-            <p class="section-lead">Registered retail and commercial client profiles retrieved through Eloquent models.</p>
-        </div>
-        <div class="overlapping-stat" aria-label="Customer summary count">
-            <span class="stat-giant" aria-hidden="true">{{ sprintf('%02d', count($customers)) }}</span>
-            <div class="stat-meta">
-                <span class="stat-label">Total Records</span>
-                <span class="stat-value">{{ count($customers) }}</span>
-            </div>
-        </div>
+        <h1 class="page-title">Customer Accounts</h1>
+        <p class="page-lead">
+            Registered retail and commercial client profiles retrieved through the <code>Customer</code> Eloquent ORM model. Total Records: {{ count($customers) }}.
+        </p>
     </header>
 
-    <div class="table-container open-ledger" tabindex="0" role="region" aria-label="Customer accounts directory">
+    <div class="table-container" tabindex="0" role="region" aria-label="Customer accounts directory">
         <table class="data-table">
-            <caption class="visually-hidden">Customer accounts directory</caption>
             <thead>
                 <tr>
                     <th scope="col" class="th-num">#</th>
@@ -36,7 +21,7 @@
             </thead>
             <tbody>
                 @foreach ($customers as $index => $customer)
-                    <tr class="ledger-row-item">
+                    <tr>
                         <td class="td-num" data-label="#">{{ sprintf('%02d', $index + 1) }}</td>
                         <td class="cell-primary" data-label="Full Name">{{ $customer->full_name ?? $customer['full_name'] }}</td>
                         <td class="cell-email" data-label="Email Address">
@@ -47,11 +32,6 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
-
-    <div class="data-notice">
-        <span class="notice-icon" aria-hidden="true">&bull;</span>
-        <p>Data source: Laravel Eloquent ORM via <code>App\Models\Customer::all()</code> backed by relational database table <code>customers</code>.</p>
     </div>
 </div>
 @endsection

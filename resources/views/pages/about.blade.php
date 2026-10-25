@@ -2,114 +2,89 @@
 
 @section('content')
 <div class="about-container">
-    <header class="section-header">
-        <div class="tag-row">
-            <span class="market-tag">System Overview &bull; Architecture</span>
-            <span class="status-indicator">
-                <span class="status-pip" aria-hidden="true"></span>
-                <span class="status-label">Documented Flow</span>
-            </span>
-        </div>
+    <header class="about-header">
         <h1 class="page-title">About This Application</h1>
-        <p class="section-lead">
-            Technical Formative Assessment 6 focuses on the transition from static arrays to Laravel's Eloquent ORM, database migrations, model seeders, and relational query abstraction.
+        <p class="page-lead">
+            Technical Formative Assessment 6 demonstrates the architectural transition from static arrays to Laravel's Eloquent ORM, database migrations, model seeders, and relational query abstraction.
         </p>
     </header>
 
-    <div class="about-layout">
-        <!-- Connected 4-Step Flow -->
-        <section class="flow-section" aria-labelledby="flow-heading">
-            <div class="flow-mast">
-                <h2 id="flow-heading" class="section-heading">Request Execution Flow</h2>
-                <p class="section-sublead">
-                    In Laravel, each user action follows an explicit Model-View-Controller path backed by Eloquent ORM:
-                </p>
-            </div>
+    <section class="content-section" aria-labelledby="flow-heading">
+        <h2 id="flow-heading" class="section-title">Request Execution Flow</h2>
+        <p class="section-lead">
+            In Laravel, incoming browser requests follow an explicit Model-View-Controller path using Eloquent ORM:
+        </p>
 
-            <ol class="staggered-flow-rail" role="list">
-                <li class="flow-node step-odd">
-                    <div class="node-track" aria-hidden="true">
-                        <span class="oversized-num">01</span>
-                        <div class="track-line"></div>
-                    </div>
-                    <div class="node-card">
-                        <div class="node-kicker">STAGE 01 &bull; INGRESS</div>
-                        <strong class="flow-step-title">1. Incoming URL</strong>
-                        <p class="flow-step-text">The browser issues an HTTP GET request to a path such as <code>/customers</code> or <code>/users</code>.</p>
-                    </div>
-                </li>
-
-                <li class="flow-node step-even">
-                    <div class="node-track" aria-hidden="true">
-                        <span class="oversized-num">02</span>
-                        <div class="track-line"></div>
-                    </div>
-                    <div class="node-card">
-                        <div class="node-kicker">STAGE 02 &bull; DISPATCH</div>
-                        <strong class="flow-step-title">2. Route Matching</strong>
-                        <p class="flow-step-text">The router in <code>routes/web.php</code> resolves the URL to a specific controller and action method.</p>
-                    </div>
-                </li>
-
-                <li class="flow-node step-odd">
-                    <div class="node-track" aria-hidden="true">
-                        <span class="oversized-num">03</span>
-                        <div class="track-line"></div>
-                    </div>
-                    <div class="node-card">
-                        <div class="node-kicker">STAGE 03 &bull; PROCESS &amp; ORM</div>
-                        <strong class="flow-step-title">3. Eloquent Model Query</strong>
-                        <p class="flow-step-text">The controller method invokes Eloquent ORM models (<code>Customer::all()</code>, <code>User::all()</code>) to retrieve database records and passes them to the Blade view renderer.</p>
-                    </div>
-                </li>
-
-                <li class="flow-node step-even">
-                    <div class="node-track" aria-hidden="true">
-                        <span class="oversized-num">04</span>
-                        <div class="track-terminal"></div>
-                    </div>
-                    <div class="node-card">
-                        <div class="node-kicker">STAGE 04 &bull; RESPONSE</div>
-                        <strong class="flow-step-title">4. View Presentation</strong>
-                        <p class="flow-step-text">The Blade view iterates through Eloquent collections with <code>@@foreach</code>, applies HTML escaping, and returns the finished response to the client.</p>
-                    </div>
-                </li>
-            </ol>
-        </section>
-
-        <!-- Contrasting Implementation Note -->
-        <aside class="storage-dispatch-memo" aria-labelledby="memo-heading">
-            <div class="memo-mast">
-                <div class="memo-top-row">
-                    <span class="memo-stamp">ARCHITECTURAL MEMORANDUM</span>
-                    <span class="memo-ref">REF // TFA6-ELOQUENT</span>
+        <ol class="flow-list">
+            <li class="flow-item">
+                <div class="flow-marker">1</div>
+                <div class="flow-content">
+                    <h3 class="flow-step-title">Incoming URL</h3>
+                    <p class="flow-step-text">The browser issues an HTTP GET request to an application endpoint such as <code>/customers</code> or <code>/users</code>.</p>
                 </div>
-                <h2 id="memo-heading" class="memo-title">Data Architecture: From Arrays to Eloquent</h2>
-            </div>
-            <div class="memo-content">
-                <p class="memo-lead">
-                    In TFA6, temporary static arrays have been replaced with full database persistence. Laravel migrations define strict DDL schemas for the <code>customers</code> and <code>users</code> tables, database seeders populate realistic sample records, and Eloquent models wrap table records into expressive PHP objects.
-                </p>
-                <div class="memo-meta-ledger">
-                    <div class="ledger-row">
-                        <span class="ledger-term">Storage Mechanism:</span>
-                        <span class="ledger-value">Relational Database via Eloquent ORM</span>
-                    </div>
-                    <div class="ledger-row">
-                        <span class="ledger-term">Schema Definition:</span>
-                        <span class="ledger-value">Laravel Migrations (customers &amp; users)</span>
-                    </div>
-                    <div class="ledger-row">
-                        <span class="ledger-term">Data Seeding:</span>
-                        <span class="ledger-value">CustomerSeeder &amp; UserSeeder</span>
-                    </div>
-                    <div class="ledger-row">
-                        <span class="ledger-term">Active Models:</span>
-                        <span class="ledger-value">App\Models\Customer &amp; App\Models\User</span>
-                    </div>
+            </li>
+
+            <li class="flow-item">
+                <div class="flow-marker">2</div>
+                <div class="flow-content">
+                    <h3 class="flow-step-title">Route Matching</h3>
+                    <p class="flow-step-text">The router in <code>routes/web.php</code> intercepts the request and matches the URI to its registered controller action.</p>
                 </div>
+            </li>
+
+            <li class="flow-item">
+                <div class="flow-marker">3</div>
+                <div class="flow-content">
+                    <h3 class="flow-step-title">Eloquent Model Query</h3>
+                    <p class="flow-step-text">The controller executes queries through the corresponding Eloquent model (e.g. <code>Customer::all()</code>), retrieving active record instances.</p>
+                </div>
+            </li>
+
+            <li class="flow-item">
+                <div class="flow-marker">4</div>
+                <div class="flow-content">
+                    <h3 class="flow-step-title">View Presentation</h3>
+                    <p class="flow-step-text">The controller passes data collections into Blade templates, compiling semantic HTML for the browser response.</p>
+                </div>
+            </li>
+        </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="comparison-heading">
+        <h2 id="comparison-heading" class="section-title">Data Architecture: From Arrays to Eloquent</h2>
+        <p class="section-lead">
+            Comparison between in-memory arrays (TFA5) and relational persistence via <code>App\Models\User</code> and <code>App\Models\Customer</code>:
+        </p>
+
+        <div class="comparison-grid">
+            <div class="code-column">
+                <h3 class="code-title">Phase 01: In-Memory Arrays (TFA5)</h3>
+                <pre class="code-block"><code>// CustomerController.php (TFA5)
+public function index()
+{
+    $customers = [
+        ['id' => 1, 'full_name' => 'Maria Santos', 'email' => 'maria@example.com'],
+        ['id' => 2, 'full_name' => 'Juan Dela Cruz', 'email' => 'juan@example.com'],
+    ];
+
+    return view('customers.index', compact('customers'));
+}</code></pre>
             </div>
-        </aside>
-    </div>
+
+            <div class="code-column">
+                <h3 class="code-title">Phase 02: Relational Eloquent ORM (TFA6)</h3>
+                <pre class="code-block"><code>// CustomerController.php (TFA6)
+use App\Models\Customer;
+
+public function index()
+{
+    // Queries relational 'customers' table via PDO
+    $customers = Customer::all();
+
+    return view('customers.index', compact('customers'));
+}</code></pre>
+            </div>
+        </div>
+    </section>
 </div>
 @endsection

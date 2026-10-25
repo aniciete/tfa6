@@ -34,14 +34,12 @@ class PosEloquentTest extends TestCase
         $response->assertSee('About');
         $response->assertSee('aria-current="page"', false);
 
-        // Extended assertions for Bright-Market layout and landmarks
+        // Extended assertions for layout and landmarks
         $response->assertSee('Skip to main content');
         $response->assertSee('href="#main-content"', false);
         $response->assertSee('role="banner"', false);
         $response->assertSee('role="main"', false);
         $response->assertSee('role="contentinfo"', false);
-        $response->assertSee('01');
-        $response->assertSee('Eloquent Models');
         $response->assertSee('assets/css/style.css');
         $response->assertSee('favicon.svg');
     }
@@ -60,14 +58,12 @@ class PosEloquentTest extends TestCase
         $response->assertSee('Eloquent ORM');
         $response->assertSee('aria-current="page"', false);
 
-        // Extended assertions for landmarks and connected 4-step flow
+        // Extended assertions for landmarks and flow
         $response->assertSee('Skip to main content');
-        $response->assertSee('02');
-        $response->assertSee('1. Incoming URL');
-        $response->assertSee('2. Route Matching');
-        $response->assertSee('3. Eloquent Model Query');
-        $response->assertSee('4. View Presentation');
-        $response->assertSee('ARCHITECTURAL MEMORANDUM');
+        $response->assertSee('Incoming URL');
+        $response->assertSee('Route Matching');
+        $response->assertSee('Eloquent Model Query');
+        $response->assertSee('View Presentation');
         $response->assertSee('App\Models\Customer');
         $response->assertSee('App\Models\User');
     }
@@ -100,7 +96,6 @@ class PosEloquentTest extends TestCase
         $response->assertSee('data-label="Email Address"', false);
         $response->assertSee('data-label="Phone Number"', false);
         $response->assertSee('data-label="#"', false);
-        $response->assertSee('stat-giant');
     }
 
     /**
@@ -132,7 +127,6 @@ class PosEloquentTest extends TestCase
         $response->assertSee('data-label="Full Name"', false);
         $response->assertSee('data-label="System Role"', false);
         $response->assertSee('role-badge');
-        $response->assertSee('stat-giant');
     }
 
     /**
